@@ -18,24 +18,26 @@ import java.util.LinkedList;
 import javax.swing.JFileChooser;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+
 public class main {
 
     /**
      * @param args the command line arguments
      */
-    
-     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static void main(String[] args) throws  IOException, JavaLayerException {
-       
+    static LinkedList<Cancion> list = new LinkedList();
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    public static void main(String[] args) throws IOException, JavaLayerException {
+
         Reproductor();
-         
-        
+
     }
-     public static void Reproductor() throws IOException, JavaLayerException {
-          String rutaArchivo ="C:\\Users\\Hp EliteBook\\OneDrive\\Documentos\\canciones\\Hit the Road Jack.mp3";
-        ReproductorMusica reproductor =new ReproductorMusica (rutaArchivo);
-        
-        LinkedList generada = new LinkedList();
+
+    public static void Reproductor() throws IOException, JavaLayerException {
+        String rutaArchivo = "C:\\Users\\yorda\\OneDrive\\Documentos\\Canciones sibajasPlay\\RagnBone Man  Human Official Video.mp3";
+        ReproductorMusica reproductor = new ReproductorMusica(rutaArchivo);
+      
+        list.add(new Cancion("C:\\Users\\yorda\\OneDrive\\Documentos\\Canciones sibajasPlay\\RagnBone Man  Human Official Video.mp3", "1"));
         
 
         boolean salir = false;
@@ -52,32 +54,36 @@ public class main {
             System.out.println("8. aleatorio");
             System.out.println("9. Salir");
             System.out.print("Ingrese el número de opción que desea: ");
-            
-            int opcion =Integer.parseInt(br.readLine());
+
+            int opcion = Integer.parseInt(br.readLine());
 
             switch (opcion) {
                 case 1:
                     reproductor.reproducir();
-                    
+
                     break;
                 case 2:
                     reproductor.pausar();
-                    
+
                     break;
                 case 3:
-                   
+
                     reproductor.detener();
                     break;
                 case 4:
                     reproductor.reanudar();
-                   
+
                     break;
                 case 5:
-                   
+
                     break;
                 case 6:
                     break;
                 case 7:
+                    reproductor.añadeCanciones();
+                    for(Cancion cancion:list){
+                        System.out.println(cancion.toString());
+                    }
                     break;
                 case 8:
                     break;
@@ -93,5 +99,5 @@ public class main {
 
         System.out.println("Gracias por usar el Reproductor de Música.");
     }
-    
+
 }
