@@ -229,7 +229,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         try {
-            reproductor.selectPreviousMusic();
+            reproductor.selectNextMusic();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JavaLayerException ex) {
@@ -241,7 +241,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         try {
-            reproductor.selectNextMusic();
+            reproductor.selectPreviousMusic();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JavaLayerException ex) {

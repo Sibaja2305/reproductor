@@ -71,7 +71,8 @@ public class ReproductorMusica implements Runnable {
             File rutaArhivo = new File(list.get(indexSong).getRuta());
             player.open(rutaArhivo);
             player.play();
-            indexSong = list.indexOf(fileRute);
+           
+            
 
         } catch (BasicPlayerException ex) {
             Logger.getLogger(ReproductorMusica.class.getName()).log(Level.SEVERE, null, ex);
