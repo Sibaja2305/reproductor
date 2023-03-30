@@ -18,6 +18,8 @@ import java.util.LinkedList;
 import javax.swing.JFileChooser;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
+
 
 public class main {
 
@@ -26,18 +28,22 @@ public class main {
      */
     static LinkedList<Cancion> list = new LinkedList();
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static Cancion cancion;
 
-    public static void main(String[] args) throws IOException, JavaLayerException {
+    public static void main(String[] args) throws IOException, JavaLayerException, BasicPlayerException {
 
-        Reproductor();
+        //Reproductor();
+        PaginaPrincipal v = new PaginaPrincipal();
+        v.setVisible(true);
+        v.setLocationRelativeTo(null);
 
     }
 
-    public static void Reproductor() throws IOException, JavaLayerException {
-        String rutaArchivo = "C:\\Users\\yorda\\OneDrive\\Documentos\\Canciones sibajasPlay\\RagnBone Man  Human Official Video.mp3";
+    public static void Reproductor() throws IOException, JavaLayerException, BasicPlayerException {
+        String rutaArchivo = "C:\\Users\\Hp EliteBook\\OneDrive\\Documentos\\canciones\\RagnBone Man  Human Official Video.mp3";
         ReproductorMusica reproductor = new ReproductorMusica(rutaArchivo);
       
-        list.add(new Cancion("C:\\Users\\yorda\\OneDrive\\Documentos\\Canciones sibajasPlay\\RagnBone Man  Human Official Video.mp3", "1"));
+ 
         
 
         boolean salir = false;
@@ -59,19 +65,19 @@ public class main {
 
             switch (opcion) {
                 case 1:
-                    reproductor.reproducir();
+                    reproductor.playMusic(cancion );
 
                     break;
                 case 2:
-                    reproductor.pausar();
+                    reproductor.pauseMusic();
 
                     break;
                 case 3:
 
-                    reproductor.detener();
+                    reproductor.stopMusic();
                     break;
                 case 4:
-                    reproductor.reanudar();
+                    reproductor.resumeMusic();
 
                     break;
                 case 5:
@@ -80,7 +86,7 @@ public class main {
                 case 6:
                     break;
                 case 7:
-                    reproductor.añadeCanciones();
+                    reproductor.addMusic();
                     for(Cancion cancion:list){
                         System.out.println(cancion.toString());
                     }
@@ -88,7 +94,9 @@ public class main {
                 case 8:
                     break;
                 case 9:
+                    reproductor.stopMusic();
                     salir = true;
+                    
                     break;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
