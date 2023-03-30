@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sibajaplay;
 
 import java.io.File;
@@ -22,12 +18,14 @@ import static sibajaplay.main.br;
 import static sibajaplay.main.list;
 
 /**
- *
  * @author Kevin Sibaja Granados
  * @author Yordany Navarro Hernandez
  * @author Diego Herrera Lopez
  * @author Jonathan Alfaro Herrera
+ * 
+ * Aquí se hace la declaración de algunas variables 
  */
+
 public class ReproductorMusica implements Runnable {
 
     private String fileRute;
@@ -42,46 +40,80 @@ public class ReproductorMusica implements Runnable {
 
     }
 
+    /**
+     *
+     * @param get
+     * @throws FileNotFoundException
+     * @throws JavaLayerException
+     *
+     * Este metodo es para dar inicio a la canción.
+     */
     public void playMusic(Cancion get) throws FileNotFoundException, JavaLayerException {
         thread = new Thread(this);
         thread.start();
 
     }
 
+    /**
+     *
+     * @throws BasicPlayerException
+     *
+     * Este metodo sirve para detener la canción que se esta reproduciendo en
+     * ese momento.
+     */
     public void stopMusic() throws BasicPlayerException {
 
         player.stop();
     }
 
+    /**
+     *
+     * @throws BasicPlayerException
+     *
+     * Este metodo sirve para pausar la canción que se esta reproduciendo.
+     */
     public void pauseMusic() throws BasicPlayerException {
 
         player.pause();
 
     }
 
+    /**
+     *
+     * @throws JavaLayerException
+     * @throws BasicPlayerException
+     *
+     * Este metodo sirve para reanudar la canción justamente donde se pauso la
+     * música.
+     */
     public void resumeMusic() throws JavaLayerException, BasicPlayerException {
 
         player.resume();
 
     }
 
+    /**
+     * Este metodo en hilo sirve para abrir y reproducir el archivo de audio
+     * seleccionado.
+     */
     public void run() {
         try {
 
             File rutaArhivo = new File(list.get(indexSong).getRuta());
             player.open(rutaArhivo);
             player.play();
-           
-            
 
         } catch (BasicPlayerException ex) {
             Logger.getLogger(ReproductorMusica.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-
+    /**
+     * Este metodo sirve para agregar canciones, las cuales se guardan en
+     * "list".
+     */
     public void addMusic() {
-        
+
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de audio", "mp3", "wav"));
@@ -103,10 +135,19 @@ public class ReproductorMusica implements Runnable {
 
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws JavaLayerException
+     * @throws BasicPlayerException
+     *
+     * Este metodo sirve para pasar a la siguiente canción que se encuentra en
+     * la lista (list).
+     */
     public void selectNextMusic() throws FileNotFoundException, JavaLayerException, BasicPlayerException {
 
         if (list != null && !list.isEmpty()) {
-            if (indexSong < list.size() -1) {
+            if (indexSong < list.size() - 1) {
                 indexSong++;
             } else {
                 indexSong = 0;
@@ -118,6 +159,15 @@ public class ReproductorMusica implements Runnable {
 
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws JavaLayerException
+     * @throws BasicPlayerException
+     *
+     * Este metodo sirve para retroceder a la canción que se encuentra en la
+     * lista (list).
+     */
     public void selectPreviousMusic() throws FileNotFoundException, JavaLayerException, BasicPlayerException {
         if (list != null && !list.isEmpty()) {
             if (indexSong > 0) {
@@ -131,6 +181,14 @@ public class ReproductorMusica implements Runnable {
         }
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws JavaLayerException
+     *
+     * Este metodo sirve para escoger una canción aleatoriamente dentro de la
+     * lista (list).
+     */
     public void SelectRandomMusic() throws FileNotFoundException, JavaLayerException {
         indexSong = (int) (Math.random() * list.size());
         playMusic(list.get(indexSong));

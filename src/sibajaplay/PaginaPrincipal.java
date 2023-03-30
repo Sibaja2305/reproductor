@@ -1,12 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sibajaplay;
 
 /**
  *
- * @author Hp EliteBook
+ * @author Kevin Sibaja Granados
+ * @author Yordany Navarro Hernandez
+ * @author Diego Herrera Lopez
+ * @author Jonathan Alfaro Herrera
  */
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +25,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public PaginaPrincipal() throws FileNotFoundException, JavaLayerException {
         
         initComponents();
-         String rutaArchivo = "C:\\Users\\Hp EliteBook\\OneDrive\\Documentos\\canciones\\RagnBone Man  Human Official Video.mp3";
+         String rutaArchivo = "";
           reproductor = new ReproductorMusica(rutaArchivo);
         
         

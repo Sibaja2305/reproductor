@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package sibajaplay;
 
 /**
- *
- * @author Hp EliteBook
+ * @author Kevin Sibaja Granados
+ * @author Yordany Navarro Hernandez
+ * @author Diego Herrera Lopez
+ * @author Jonathan Alfaro Herrera
  */
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +18,16 @@ import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 
-
+/**
+ *
+ * @author Kevin Sibaja Granados
+ * @author Yordany Navarro Hernandez
+ * @author Diego Herrera Lopez
+ * @author Jonathan Alfaro Herrera
+ *
+ * Esta clase contiene algunos metodos para la ejecucion del programa y tambien
+ * se ejecuta la "PaginaPrincipal" que es la interfaz del reproductor.
+ */
 public class main {
 
     /**
@@ -30,6 +37,14 @@ public class main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static Cancion cancion;
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     * @throws JavaLayerException
+     * @throws BasicPlayerException Aquí se ejecuta la "PaginaPrincipal" que es
+     * la interfaz del reproductor.
+     */
     public static void main(String[] args) throws IOException, JavaLayerException, BasicPlayerException {
 
         //Reproductor();
@@ -39,12 +54,19 @@ public class main {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws JavaLayerException
+     * @throws BasicPlayerException
+     * Aquí se declra la "rutaArchivo" la cual es donde se guardaran las rutas de 
+     * las canciones seleccionadas. 
+     * Y también muestra un menu, este menu no se esta usando ya que se implemento 
+     * una interfaz la cual ejecuta los metodos.
+     */
     public static void Reproductor() throws IOException, JavaLayerException, BasicPlayerException {
-        String rutaArchivo = "C:\\Users\\Hp EliteBook\\OneDrive\\Documentos\\canciones\\RagnBone Man  Human Official Video.mp3";
+        String rutaArchivo = "";
         ReproductorMusica reproductor = new ReproductorMusica(rutaArchivo);
-      
- 
-        
 
         boolean salir = false;
 
@@ -65,7 +87,7 @@ public class main {
 
             switch (opcion) {
                 case 1:
-                    reproductor.playMusic(cancion );
+                    reproductor.playMusic(cancion);
 
                     break;
                 case 2:
@@ -87,7 +109,7 @@ public class main {
                     break;
                 case 7:
                     reproductor.addMusic();
-                    for(Cancion cancion:list){
+                    for (Cancion cancion : list) {
                         System.out.println(cancion.toString());
                     }
                     break;
@@ -96,7 +118,7 @@ public class main {
                 case 9:
                     reproductor.stopMusic();
                     salir = true;
-                    
+
                     break;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
